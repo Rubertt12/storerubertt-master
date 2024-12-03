@@ -61,7 +61,7 @@ function searchImage() {
   }
 
   if (!searchTerm) {
-    showCustomAlert("Você deve escrever o nome do seu jogo.")
+    showCustomAlert("Você deve escrever o nome do seu jogo." , "./assets/robo triste.jpeg")
     return
   }
 
@@ -79,7 +79,7 @@ function searchImage() {
       modalImage.style.width = imageSize
       modalImage.style.height = "auto"
       modalImage.onerror = function () {
-        modalImage.src = "/assets/robo triste.jpeg" // Imagem de fallback caso o arquivo não exista
+        modalImage.src = "./assets/robo triste.jpeg" // Imagem de fallback caso o arquivo não exista
         modalImage.style.width = "200px" // Tamanho fixo para a imagem de fallback
         modalImage.style.height = "auto"
       }
@@ -94,7 +94,7 @@ function searchImage() {
   }
 
   if (!found) {
-    showCustomAlert("Jogo não encontrado", "/assets/robo triste.jpeg")
+    showCustomAlert("Jogo não encontrado", "./assets/robo triste.jpeg")
   }
 }
 
