@@ -5,6 +5,16 @@ function searchImage() {
     .value.trim()
     .toLowerCase()
 
+
+  
+  function toggleMenu() {
+    const nav = document.querySelector('ul');
+    const icon = document.querySelector('.menu-icon');
+    nav.classList.toggle('active');
+    icon.classList.toggle('active');
+  }
+
+
   const imageMap = {
     /* NEO GEO */
     "fatal fury": {

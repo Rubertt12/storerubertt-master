@@ -7,7 +7,7 @@
 }
 
 /* Importando fontes do Google Fonts */
-@import url("https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;500;700&family=Roboto:wght@400;500;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;500;700&family=Roboto:wght@400;500;700&family=Oswald:wght@400;500&display=swap");
 
 /* Estilos Gerais */
 body {
@@ -15,24 +15,37 @@ body {
   color: #e0e0e0; /* Texto claro */
   font-family: "Roboto", sans-serif;
   margin: 40px;
-  padding: 0;
   padding-top: 70px;
 }
 
 /* Cabeçalho */
 header {
-  background-color: #111;
+  background: #121212;
+  animation: gradientAnimation 5s infinite alternate;
   padding: 60px 0;
   text-align: center;
   position: relative;
   margin-bottom: 60px;
+  background-size: 400% 400%;
+}
+
+@keyframes gradientAnimation {
+  0% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
 }
 
 h1 {
+  font-family: "Oswald", sans-serif;
   font-size: 56px;
-  color: #00b894;
-  text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5);
+  color: #fff;
+  text-shadow: 3px 3px 15px rgba(0, 0, 0, 0.7), 0 0 25px rgba(0, 0, 0, 0.5);
   margin-bottom: 20px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
 }
 
 h3 {
@@ -76,7 +89,6 @@ ul li:last-child {
   margin-right: 0;
 }
 
-/* Links de Navegação */
 a {
   text-decoration: none;
   color: #fff;
@@ -86,6 +98,11 @@ a {
   text-transform: uppercase;
   font-weight: 500;
   transition: background-color 0.3s, color 0.3s;
+}
+
+a:hover {
+  background-color: #00b894;
+  color: #121212;
 }
 
 /* Principal */
@@ -107,7 +124,7 @@ main {
   display: flex;
   justify-content: flex-start;
   gap: 20px;
-  flex-wrap: wrap; /* Permitindo que os jogos quebrem para novas linhas em telas menores */
+  flex-wrap: wrap;
   margin-top: 20px;
   padding-bottom: 20px;
   overflow-x: auto;
@@ -121,7 +138,7 @@ main {
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
   text-align: center;
   border: 2px solid #333;
-  width: 220px; /* Largura fixa para todos os jogos */
+  width: 220px;
   flex-shrink: 0;
   transition: transform 0.3s ease, background-color 0.3s ease;
 }
@@ -144,7 +161,7 @@ main {
   color: #fff;
   border: none;
   font-size: 16px;
-  font-weight: 50;
+  font-weight: 500;
   border-radius: 5px;
   cursor: pointer;
   transition: background-color 0.3s, transform 0.3s;
@@ -195,7 +212,7 @@ button {
   background: #00b894;
   color: white;
   font-size: 18px;
-  font-weight: 50;
+  font-weight: 500;
   text-transform: uppercase;
   cursor: pointer;
   transition: background-color 0.3s, transform 0.3s;
@@ -251,7 +268,6 @@ small {
   object-fit: contain;
 }
 
-/* Botão de Fechar */
 .close-button {
   position: absolute;
   top: 5px;
@@ -268,24 +284,51 @@ small {
 /* Responsividade */
 @media screen and (max-width: 700px) {
   body {
-    margin: 10px; /* Ajusta as margens para telas menores */
+    margin: 10px;
   }
 
   h1 {
-    font-size: 36px; /* Reduz o tamanho da fonte */
+    font-size: 36px;
   }
 
   .menu-icon {
     display: flex;
+    flex-direction: column;
+    cursor: pointer;
+    position: fixed;
+    top: 15px;
+    right: 20px;
+    z-index: 1100;
+  }
+
+  .menu-icon .bar {
+    width: 28px;
+    height: 4px;
+    background-color: #00b894;
+    margin: 4px 0;
+    border-radius: 4px;
+    transition: 0.4s;
+  }
+
+  .menu-icon.active .bar:nth-child(1) {
+    transform: rotate(-45deg) translate(-6px, 6px);
+  }
+
+  .menu-icon.active .bar:nth-child(2) {
+    opacity: 0;
+  }
+
+  .menu-icon.active .bar:nth-child(3) {
+    transform: rotate(45deg) translate(-6px, -6px);
   }
 
   ul {
     display: none;
+    flex-direction: column;
+    position: absolute;
     top: 60px;
     right: 0;
     background-color: #282c34;
-    flex-direction: column;
-    position: absolute;
     width: 100%;
   }
 
@@ -294,56 +337,7 @@ small {
   }
 
   ul li {
-    margin: 20px 0;
-  }
-
-  form {
-    width: 90%;
-  }
-
-  button {
-    width: 100%;
-  }
-
-  .game-container {
-    flex-direction: column; /* Organiza os jogos em coluna em telas menores */
-    gap: 10px;
-  }
-
-  .game {
-    width: 100%; /* Faz com que os jogos ocupem toda a largura da tela */
-    height: auto;
-  }
-
-  .game img {
-    height: 150px; /* Ajusta a altura das imagens dos jogos */
-  }
-}
-
-@media screen and (max-width: 500px) {
-  h1 {
-    font-size: 28px; /* Reduz ainda mais o tamanho da fonte */
-  }
-
-  .game img {
-    height: 120px; /* Reduz a altura das imagens */
-  }
-
-  .game button {
-    font-size: 14px; /* Ajusta o tamanho da fonte do botão */
-  }
-
-  .modal-img {
-    max-height: 200px; /* Limita a altura da imagem no modal */
-  }
-}
-
-@media screen and (min-width: 1200px) {
-  .game-container {
-    gap: 30px; /* Aumenta o espaço entre os jogos em telas grandes */
-  }
-
-  h1 {
-    font-size: 72px; /* Aumenta o tamanho do título para telas grandes */
+    margin: 10px 0;
+    text-align: center;
   }
 }
