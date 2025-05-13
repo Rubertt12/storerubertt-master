@@ -122,12 +122,14 @@ main {
 /* Contêiner de Jogos */
 .game-container {
   display: flex;
-  justify-content: flex-start;
+  justify-content: space-evenly;
   gap: 20px;
   flex-wrap: wrap;
   margin-top: 20px;
   padding-bottom: 20px;
   overflow-x: auto;
+  flex-direction: row;
+  align-items: baseline;
 }
 
 /* Estilo para cada Jogo */
